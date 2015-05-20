@@ -1,0 +1,42 @@
+﻿@model Hrm.Main.WebApplication.Models.DepartmentInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DepartmentInfo</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeesInfo.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeesInfo.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationsInfo.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationsInfo.Address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

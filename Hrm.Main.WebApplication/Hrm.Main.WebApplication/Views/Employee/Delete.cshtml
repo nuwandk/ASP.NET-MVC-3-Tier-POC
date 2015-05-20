@@ -1,0 +1,105 @@
+﻿@model Hrm.Main.WebApplication.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Delete Employee";
+}
+
+<h2 style="font-family:Arial; font-size:25px">Delete Employee</h2>
+<hr />
+<h4>Are you sure you want to delete following employee record?</h4> <br />
+<div class="form-horizontal" style="font-family:Arial; font-size:12px">
+    @*<h4>EmployeesInfo</h4>*@
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.DateOfJoin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfJoin)
+            </dd>*@
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.DepartmentViewModel.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DepartmentViewModel.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DesignationViewModel.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DesignationViewModel.Title)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpId)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.EmployeesInfo2.FirstName)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeesInfo2.FirstName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

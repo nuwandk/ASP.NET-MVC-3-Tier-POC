@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d2f0ba2e-ef72-48e8-a432-5ab75c1877d7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:53010/HrmService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="HrmService.xsd" MetadataType="Schema" ID="f2ba2ea0-6df6-4ba4-b6c8-a17b30ea4a7f" SourceId="1" SourceUrl="http://localhost:53010/HrmService.svc?xsd=xsd2" />
+    <MetadataFile FileName="HrmService.disco" MetadataType="Disco" ID="d2eb0ffa-affc-43c0-834a-51f332b66706" SourceId="1" SourceUrl="http://localhost:53010/HrmService.svc?disco" />
+    <MetadataFile FileName="HrmService1.xsd" MetadataType="Schema" ID="28b8bd82-6297-4e2a-ba69-a26d4ae86188" SourceId="1" SourceUrl="http://localhost:53010/HrmService.svc?xsd=xsd1" />
+    <MetadataFile FileName="HrmService2.xsd" MetadataType="Schema" ID="5c206773-ab3d-4489-871d-089425517ecd" SourceId="1" SourceUrl="http://localhost:53010/HrmService.svc?xsd=xsd0" />
+    <MetadataFile FileName="HrmService.wsdl" MetadataType="Wsdl" ID="f8cd034a-1da0-41c0-86c3-e71987878ff7" SourceId="1" SourceUrl="http://localhost:53010/HrmService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

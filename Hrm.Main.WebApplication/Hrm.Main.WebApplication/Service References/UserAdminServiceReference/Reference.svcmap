@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="de204c00-1ad1-4497-af74-53218955d4e1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:53010/UserAdministration.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserAdministration.disco" MetadataType="Disco" ID="b98fd77c-9017-4d97-8a7e-5d2d24c55750" SourceId="1" SourceUrl="http://localhost:53010/UserAdministration.svc?disco" />
+    <MetadataFile FileName="UserAdministration.wsdl" MetadataType="Wsdl" ID="f6c41257-2586-4f69-8174-174d0032f091" SourceId="1" SourceUrl="http://localhost:53010/UserAdministration.svc?wsdl" />
+    <MetadataFile FileName="UserAdministration.xsd" MetadataType="Schema" ID="31da916c-1394-478d-bd61-b680493dcf95" SourceId="1" SourceUrl="http://localhost:53010/UserAdministration.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserAdministration1.xsd" MetadataType="Schema" ID="1d02d910-0ca0-42e7-a0da-e7b9292eb412" SourceId="1" SourceUrl="http://localhost:53010/UserAdministration.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserAdministration2.xsd" MetadataType="Schema" ID="75a0f043-f417-40cd-83b4-cdd5b4a48779" SourceId="1" SourceUrl="http://localhost:53010/UserAdministration.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

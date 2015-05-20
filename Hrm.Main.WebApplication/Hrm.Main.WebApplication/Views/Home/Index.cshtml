@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <table>
+        <tr>
+            <td style="vertical-align:top">
+                <p style="font-size: larger; font-family: Arial; font-size: 20px"> <b>Weekly Notifications</b></p>
+                <ul style="list-style-type: square; font-family: Arial; font-size: 12px">
+                    <li>Pending confirmation employees: 15</li>
+                    <li>Pending management report approvals: 3</li>
+                    <li>Resigning employees: 4</li>
+                    <li>New comers: 2</li>
+                    <li>CSR activities: 2</li>
+                    <li>Company events: 1</li>
+                </ul>
+            </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td style="vertical-align:top">
+                <p style="font-size: larger; font-family: Arial; font-size: 20px" "> <b>Pending Approval Reports</b></p>
+                <ul style="list-style-type: square; font-family:Arial; font-size: 12px">
+                    <li>Monthly Recruitements Report</li>
+                    <li>Company Promotion Report</li>
+                    <li>Employee Compansation Variation Report</li>
+                </ul>
+            </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td style="vertical-align:top">
+                <p style="font-size: larger; font-family: Arial; font-size: 20px"> <b>Weekly Notifications</b></p>
+                <ul style="list-style-type:square; font-family:Arial; font-size:12px">
+
+                    <li>Pending confirmation employees: 15</li>
+                    <li>Pending management report approvals: 3</li>
+                    <li>Resigning employees: 4</li>
+                    <li>New comers: 2</li>
+                    <li>CSR activities: 2</li>
+                    <li>Company events: 1</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2 style="font-family:Arial; font-size:25px">New Joinees Report</h2>
+        <p style="font-family:Arial; font-size:12px">
+            New Joinees Report required to be generated monthly basis and send for the management approval.
+        </p>
+        <p>
+            @*<input type="submit" value="CreateNewJoineeReport" class="btn btn-default" />*@
+            <a class="btn btn-default" href='@Url.Action("CreateNewJoineeReport", "Home")'> Create PDF Report </a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2 style="font-family:Arial; font-size:25px">Monthly Recruitement Report</h2>
+        <p style="font-family:Arial; font-size:12px">
+            Recruitement Report required to be generated monthly basis and send for the management approval.
+        </p>
+        <p>
+            <a class="btn btn-default" href='@Url.Action("CreateMonthlyRecruitementReport", "Home")'> Create PDF Report </a>
+    </div>
+    <div class="col-md-4">
+        <h2 style="font-family:Arial; font-size:25px">Employee Resign Report</h2>
+        <p style="font-family:Arial; font-size:12px">
+            Employee Resign Report required to be generated monthly basis and send for the management approval.
+        </p>
+        <p>
+            <a class="btn btn-default" href='@Url.Action("CreateEmployeeResignReport", "Home")'> Create PDF Report </a>
+    </div>
+</div>

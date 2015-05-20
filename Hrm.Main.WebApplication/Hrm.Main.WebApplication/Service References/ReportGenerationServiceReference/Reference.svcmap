@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="46cfad96-7350-4b13-8974-3c3666773bb2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:53010/ReportGenerationService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ReportGenerationService.wsdl" MetadataType="Wsdl" ID="ec850050-b087-4e7a-a7bb-b153ed19122d" SourceId="1" SourceUrl="http://localhost:53010/ReportGenerationService.svc?wsdl" />
+    <MetadataFile FileName="ReportGenerationService.xsd" MetadataType="Schema" ID="dab34400-c59f-494f-a4ff-d204bebdd1cd" SourceId="1" SourceUrl="http://localhost:53010/ReportGenerationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ReportGenerationService1.xsd" MetadataType="Schema" ID="68bcbca6-854d-4d02-b7df-9b2581ade7ac" SourceId="1" SourceUrl="http://localhost:53010/ReportGenerationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ReportGenerationService.disco" MetadataType="Disco" ID="81a17cc0-720b-4675-a189-9fed42f26b01" SourceId="1" SourceUrl="http://localhost:53010/ReportGenerationService.svc?disco" />
+    <MetadataFile FileName="ReportGenerationService2.xsd" MetadataType="Schema" ID="b9f0ca4d-94f9-40a2-bc14-8eaf98732c08" SourceId="1" SourceUrl="http://localhost:53010/ReportGenerationService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

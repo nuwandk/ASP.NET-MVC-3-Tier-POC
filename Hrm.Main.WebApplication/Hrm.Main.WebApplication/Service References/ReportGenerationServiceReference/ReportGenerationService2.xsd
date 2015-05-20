@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:53010/ReportGenerationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ReportDataDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReportAuthor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReportId" type="xs:long" />
+          <xs:element minOccurs="0" name="ReportStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReportTypeId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReportDataDto" nillable="true" type="tns:ReportDataDto" />
+  <xs:complexType name="BaseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Operation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="BaseDto" nillable="true" type="tns:BaseDto" />
+  <xs:complexType name="ServiceFaultExceptionDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceFaultExceptionDto" nillable="true" type="tns:ServiceFaultExceptionDto" />
+</xs:schema>

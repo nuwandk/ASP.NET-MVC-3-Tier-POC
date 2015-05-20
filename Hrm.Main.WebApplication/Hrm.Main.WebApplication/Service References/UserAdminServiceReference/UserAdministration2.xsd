@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:53010/UserAdministration.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="UserDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreateUserid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsDelete" nillable="true" type="xs:short" />
+          <xs:element minOccurs="0" name="LstUpdDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="LstUpdUserid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserNameAlias" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserPk" type="xs:long" />
+          <xs:element minOccurs="0" name="UserRoles" nillable="true" type="tns:ArrayOfUserRoleDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserDto" nillable="true" type="tns:UserDto" />
+  <xs:complexType name="BaseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Operation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="BaseDto" nillable="true" type="tns:BaseDto" />
+  <xs:complexType name="ArrayOfUserRoleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserRoleDto" nillable="true" type="tns:UserRoleDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserRoleDto" nillable="true" type="tns:ArrayOfUserRoleDto" />
+  <xs:complexType name="UserRoleDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreateUserid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsDelete" nillable="true" type="xs:short" />
+          <xs:element minOccurs="0" name="LstUpdDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="LstUpdUserid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RolePk" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="UserPk" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="UserRolePk" type="xs:long" />
+          <xs:element minOccurs="0" name="Users" nillable="true" type="tns:UserDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserRoleDto" nillable="true" type="tns:UserRoleDto" />
+  <xs:complexType name="ServiceFaultExceptionDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceFaultExceptionDto" nillable="true" type="tns:ServiceFaultExceptionDto" />
+</xs:schema>

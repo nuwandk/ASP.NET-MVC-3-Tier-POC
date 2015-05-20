@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HrManagementDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DepartmentInfo">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="ManagerId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" />
+        </EntityType>
+        <EntityType Name="DesignationsInfo">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="250" />
+          <Property Name="MinSalary" Type="int" />
+          <Property Name="MaxSalary" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeesInfo">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="350" />
+          <Property Name="JobDesignationId" Type="int" />
+          <Property Name="PhoneNumber" Type="nchar" MaxLength="10" />
+          <Property Name="Salary" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="ManagerId" Type="int" />
+          <Property Name="DateOfJoin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmpolyeeHistoryInfo">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="DesignationId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+        </EntityType>
+        <EntityType Name="LocationsInfo">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Employees_Designations">
+          <End Role="DesignationsInfo" Type="Self.DesignationsInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationsInfo">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo">
+              <PropertyRef Name="JobDesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Department">
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="0..1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Designation">
+          <End Role="DesignationsInfo" Type="Self.DesignationsInfo" Multiplicity="0..1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationsInfo">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="DesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Empolyee">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblEmployee">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="1" />
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="DepartmentInfo">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblEmployees">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo1" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo1">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblLocation">
+          <End Role="LocationsInfo" Type="Self.LocationsInfo" Multiplicity="0..1" />
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationsInfo">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="DepartmentInfo">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployees_tblDepartment">
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HrManagementDbModelStoreContainer">
+          <EntitySet Name="DepartmentInfo" EntityType="Self.DepartmentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DesignationsInfo" EntityType="Self.DesignationsInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeesInfo" EntityType="Self.EmployeesInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpolyeeHistoryInfo" EntityType="Self.EmpolyeeHistoryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationsInfo" EntityType="Self.LocationsInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employees_Designations" Association="Self.FK_Employees_Designations">
+            <End Role="DesignationsInfo" EntitySet="DesignationsInfo" />
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Department" Association="Self.FK_EmpolyeeHistory_Department">
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfo" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Designation" Association="Self.FK_EmpolyeeHistory_Designation">
+            <End Role="DesignationsInfo" EntitySet="DesignationsInfo" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Empolyee" Association="Self.FK_EmpolyeeHistory_Empolyee">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblEmployee" Association="Self.FK_tblDepartment_tblEmployee">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblEmployees" Association="Self.FK_tblDepartment_tblEmployees">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+            <End Role="EmployeesInfo1" EntitySet="EmployeesInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblLocation" Association="Self.FK_tblDepartment_tblLocation">
+            <End Role="LocationsInfo" EntitySet="LocationsInfo" />
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployees_tblDepartment" Association="Self.FK_tblEmployees_tblDepartment">
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfo" />
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HrManagementDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DepartmentInfo">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" />
+          <NavigationProperty Name="EmpolyeeHistoryInfoes" Relationship="Self.FK_EmpolyeeHistory_Department" FromRole="DepartmentInfo" ToRole="EmpolyeeHistoryInfo" />
+          <NavigationProperty Name="EmployeesInfo" Relationship="Self.FK_tblDepartment_tblEmployee" FromRole="DepartmentInfo" ToRole="EmployeesInfo" />
+          <NavigationProperty Name="LocationsInfo" Relationship="Self.FK_tblDepartment_tblLocation" FromRole="DepartmentInfo" ToRole="LocationsInfo" />
+          <NavigationProperty Name="EmployeesInfoes" Relationship="Self.FK_tblEmployees_tblDepartment" FromRole="DepartmentInfo" ToRole="EmployeesInfo" />
+        </EntityType>
+        <EntityType Name="DesignationsInfo">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MinSalary" Type="Int32" />
+          <Property Name="MaxSalary" Type="Int32" />
+          <NavigationProperty Name="EmployeesInfoes" Relationship="Self.FK_Employees_Designations" FromRole="DesignationsInfo" ToRole="EmployeesInfo" />
+          <NavigationProperty Name="EmpolyeeHistoryInfoes" Relationship="Self.FK_EmpolyeeHistory_Designation" FromRole="DesignationsInfo" ToRole="EmpolyeeHistoryInfo" />
+        </EntityType>
+        <EntityType Name="EmployeesInfo">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="JobDesignationId" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Salary" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="ManagerId" Type="Int32" />
+          <Property Name="DateOfJoin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DepartmentInfoes" Relationship="Self.FK_tblDepartment_tblEmployee" FromRole="EmployeesInfo" ToRole="DepartmentInfo" />
+          <NavigationProperty Name="DepartmentInfo" Relationship="Self.FK_tblEmployees_tblDepartment" FromRole="EmployeesInfo" ToRole="DepartmentInfo" />
+          <NavigationProperty Name="DesignationsInfo" Relationship="Self.FK_Employees_Designations" FromRole="EmployeesInfo" ToRole="DesignationsInfo" />
+          <NavigationProperty Name="EmpolyeeHistoryInfo" Relationship="Self.FK_EmpolyeeHistory_Empolyee" FromRole="EmployeesInfo" ToRole="EmpolyeeHistoryInfo" />
+          <NavigationProperty Name="EmployeesInfo1" Relationship="Self.FK_tblDepartment_tblEmployees" FromRole="EmployeesInfo" ToRole="EmployeesInfo1" />
+          <NavigationProperty Name="EmployeesInfo2" Relationship="Self.FK_tblDepartment_tblEmployees" FromRole="EmployeesInfo1" ToRole="EmployeesInfo" />
+        </EntityType>
+        <EntityType Name="EmpolyeeHistoryInfo">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="DesignationId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <NavigationProperty Name="DepartmentInfo" Relationship="Self.FK_EmpolyeeHistory_Department" FromRole="EmpolyeeHistoryInfo" ToRole="DepartmentInfo" />
+          <NavigationProperty Name="DesignationsInfo" Relationship="Self.FK_EmpolyeeHistory_Designation" FromRole="EmpolyeeHistoryInfo" ToRole="DesignationsInfo" />
+          <NavigationProperty Name="EmployeesInfo" Relationship="Self.FK_EmpolyeeHistory_Empolyee" FromRole="EmpolyeeHistoryInfo" ToRole="EmployeesInfo" />
+        </EntityType>
+        <EntityType Name="LocationsInfo">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DepartmentInfoes" Relationship="Self.FK_tblDepartment_tblLocation" FromRole="LocationsInfo" ToRole="DepartmentInfo" />
+        </EntityType>
+        <Association Name="FK_EmpolyeeHistory_Department">
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="0..1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblEmployee">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="1" />
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="DepartmentInfo">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblLocation">
+          <End Role="LocationsInfo" Type="Self.LocationsInfo" Multiplicity="0..1" />
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationsInfo">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="DepartmentInfo">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployees_tblDepartment">
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Designations">
+          <End Role="DesignationsInfo" Type="Self.DesignationsInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationsInfo">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo">
+              <PropertyRef Name="JobDesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Designation">
+          <End Role="DesignationsInfo" Type="Self.DesignationsInfo" Multiplicity="0..1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationsInfo">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="DesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Empolyee">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblEmployees">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo1" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo1">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HrManagementDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DepartmentInfoes" EntityType="Self.DepartmentInfo" />
+          <EntitySet Name="DesignationsInfoes" EntityType="Self.DesignationsInfo" />
+          <EntitySet Name="EmployeesInfoes" EntityType="Self.EmployeesInfo" />
+          <EntitySet Name="EmpolyeeHistoryInfoes" EntityType="Self.EmpolyeeHistoryInfo" />
+          <EntitySet Name="LocationsInfoes" EntityType="Self.LocationsInfo" />
+          <AssociationSet Name="FK_EmpolyeeHistory_Department" Association="Self.FK_EmpolyeeHistory_Department">
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfoes" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblEmployee" Association="Self.FK_tblDepartment_tblEmployee">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblLocation" Association="Self.FK_tblDepartment_tblLocation">
+            <End Role="LocationsInfo" EntitySet="LocationsInfoes" />
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployees_tblDepartment" Association="Self.FK_tblEmployees_tblDepartment">
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfoes" />
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Designations" Association="Self.FK_Employees_Designations">
+            <End Role="DesignationsInfo" EntitySet="DesignationsInfoes" />
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Designation" Association="Self.FK_EmpolyeeHistory_Designation">
+            <End Role="DesignationsInfo" EntitySet="DesignationsInfoes" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Empolyee" Association="Self.FK_EmpolyeeHistory_Empolyee">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblEmployees" Association="Self.FK_tblDepartment_tblEmployees">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+            <End Role="EmployeesInfo1" EntitySet="EmployeesInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HrManagementDbModelStoreContainer" CdmEntityContainer="HrManagementDbEntities">
+          <EntitySetMapping Name="DepartmentInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.DepartmentInfo">
+              <MappingFragment StoreEntitySet="DepartmentInfo">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DesignationsInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.DesignationsInfo">
+              <MappingFragment StoreEntitySet="DesignationsInfo">
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MinSalary" ColumnName="MinSalary" />
+                <ScalarProperty Name="MaxSalary" ColumnName="MaxSalary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeesInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.EmployeesInfo">
+              <MappingFragment StoreEntitySet="EmployeesInfo">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="JobDesignationId" ColumnName="JobDesignationId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpolyeeHistoryInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.EmpolyeeHistoryInfo">
+              <MappingFragment StoreEntitySet="EmpolyeeHistoryInfo">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationsInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.LocationsInfo">
+              <MappingFragment StoreEntitySet="LocationsInfo">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

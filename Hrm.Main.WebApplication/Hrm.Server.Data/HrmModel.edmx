@@ -1,0 +1,909 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HrManagementDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DepartmentInfo">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="ManagerId" Type="int" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="200" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUserId" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="DesignationsInfo">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="250" />
+          <Property Name="MinSalary" Type="int" />
+          <Property Name="MaxSalary" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="200" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUserId" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EmployeesInfo">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="350" />
+          <Property Name="JobDesignationId" Type="int" />
+          <Property Name="PhoneNumber" Type="nchar" MaxLength="10" />
+          <Property Name="Salary" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="ManagerId" Type="int" />
+          <Property Name="DateOfJoin" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="200" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUserId" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EmpolyeeHistoryInfo">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="DesignationId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="200" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUserId" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="LocationsInfo">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="200" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUserId" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="OperationInfo">
+          <Key>
+            <PropertyRef Name="OperationId" />
+          </Key>
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="Operation" Type="varchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="200" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUserId" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="RoleOperationMappingInfo">
+          <Key>
+            <PropertyRef Name="RoleOperationMapId" />
+          </Key>
+          <Property Name="RoleOperationMapId" Type="int" Nullable="false" />
+          <Property Name="UserRoleId" Type="int" />
+          <Property Name="OperationId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedUserId" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="150" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="200" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUserId" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="UserRoleInfo">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" Nullable="false" />
+          <Property Name="UserRoleName" Type="varchar" MaxLength="150" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="varchar" MaxLength="200" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateUserId" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="UserRoleMappingInfo">
+          <Key>
+            <PropertyRef Name="UserRoleMapId" />
+          </Key>
+          <Property Name="UserRoleMapId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="UserRoleId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserId" Type="varchar" MaxLength="150" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdatedUserId" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_Employees_Designations">
+          <End Role="DesignationsInfo" Type="Self.DesignationsInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationsInfo">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo">
+              <PropertyRef Name="JobDesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Department">
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="0..1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Designation">
+          <End Role="DesignationsInfo" Type="Self.DesignationsInfo" Multiplicity="0..1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationsInfo">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="DesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Empolyee">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleOperationMappingInfo_Operation">
+          <End Role="OperationInfo" Type="Self.OperationInfo" Multiplicity="0..1" />
+          <End Role="RoleOperationMappingInfo" Type="Self.RoleOperationMappingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationInfo">
+              <PropertyRef Name="OperationId" />
+            </Principal>
+            <Dependent Role="RoleOperationMappingInfo">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleOperationMappingInfo_UserRoleInfoId">
+          <End Role="UserRoleInfo" Type="Self.UserRoleInfo" Multiplicity="0..1" />
+          <End Role="RoleOperationMappingInfo" Type="Self.RoleOperationMappingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoleInfo">
+              <PropertyRef Name="UserRoleId" />
+            </Principal>
+            <Dependent Role="RoleOperationMappingInfo">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblEmployee">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="0..1" />
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="DepartmentInfo">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblEmployees">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo1" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo1">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblLocation">
+          <End Role="LocationsInfo" Type="Self.LocationsInfo" Multiplicity="0..1" />
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationsInfo">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="DepartmentInfo">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployees_tblDepartment">
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMappingInfo_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <End Role="UserRoleMappingInfo" Type="Self.UserRoleMappingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoleMappingInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMappingInfo_UserRoleInfo">
+          <End Role="UserRoleInfo" Type="Self.UserRoleInfo" Multiplicity="0..1" />
+          <End Role="UserRoleMappingInfo" Type="Self.UserRoleMappingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoleInfo">
+              <PropertyRef Name="UserRoleId" />
+            </Principal>
+            <Dependent Role="UserRoleMappingInfo">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HrManagementDbModelStoreContainer">
+          <EntitySet Name="DepartmentInfo" EntityType="Self.DepartmentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DesignationsInfo" EntityType="Self.DesignationsInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeesInfo" EntityType="Self.EmployeesInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpolyeeHistoryInfo" EntityType="Self.EmpolyeeHistoryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationsInfo" EntityType="Self.LocationsInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationInfo" EntityType="Self.OperationInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleOperationMappingInfo" EntityType="Self.RoleOperationMappingInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleInfo" EntityType="Self.UserRoleInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleMappingInfo" EntityType="Self.UserRoleMappingInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employees_Designations" Association="Self.FK_Employees_Designations">
+            <End Role="DesignationsInfo" EntitySet="DesignationsInfo" />
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Department" Association="Self.FK_EmpolyeeHistory_Department">
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfo" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Designation" Association="Self.FK_EmpolyeeHistory_Designation">
+            <End Role="DesignationsInfo" EntitySet="DesignationsInfo" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Empolyee" Association="Self.FK_EmpolyeeHistory_Empolyee">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleOperationMappingInfo_Operation" Association="Self.FK_RoleOperationMappingInfo_Operation">
+            <End Role="OperationInfo" EntitySet="OperationInfo" />
+            <End Role="RoleOperationMappingInfo" EntitySet="RoleOperationMappingInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleOperationMappingInfo_UserRoleInfoId" Association="Self.FK_RoleOperationMappingInfo_UserRoleInfoId">
+            <End Role="UserRoleInfo" EntitySet="UserRoleInfo" />
+            <End Role="RoleOperationMappingInfo" EntitySet="RoleOperationMappingInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblEmployee" Association="Self.FK_tblDepartment_tblEmployee">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblEmployees" Association="Self.FK_tblDepartment_tblEmployees">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+            <End Role="EmployeesInfo1" EntitySet="EmployeesInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblLocation" Association="Self.FK_tblDepartment_tblLocation">
+            <End Role="LocationsInfo" EntitySet="LocationsInfo" />
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployees_tblDepartment" Association="Self.FK_tblEmployees_tblDepartment">
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfo" />
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMappingInfo_UserInfo" Association="Self.FK_UserRoleMappingInfo_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="UserRoleMappingInfo" EntitySet="UserRoleMappingInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMappingInfo_UserRoleInfo" Association="Self.FK_UserRoleMappingInfo_UserRoleInfo">
+            <End Role="UserRoleInfo" EntitySet="UserRoleInfo" />
+            <End Role="UserRoleMappingInfo" EntitySet="UserRoleMappingInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HrManagementDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DepartmentInfo">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ManagerId" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" />
+          <NavigationProperty Name="EmpolyeeHistoryInfoes" Relationship="Self.FK_EmpolyeeHistory_Department" FromRole="DepartmentInfo" ToRole="EmpolyeeHistoryInfo" />
+          <NavigationProperty Name="EmployeesInfo" Relationship="Self.FK_tblDepartment_tblEmployee" FromRole="DepartmentInfo" ToRole="EmployeesInfo" />
+          <NavigationProperty Name="LocationsInfo" Relationship="Self.FK_tblDepartment_tblLocation" FromRole="DepartmentInfo" ToRole="LocationsInfo" />
+          <NavigationProperty Name="EmployeesInfoes" Relationship="Self.FK_tblEmployees_tblDepartment" FromRole="DepartmentInfo" ToRole="EmployeesInfo" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DesignationsInfo">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MinSalary" Type="Int32" />
+          <Property Name="MaxSalary" Type="Int32" />
+          <NavigationProperty Name="EmployeesInfoes" Relationship="Self.FK_Employees_Designations" FromRole="DesignationsInfo" ToRole="EmployeesInfo" />
+          <NavigationProperty Name="EmpolyeeHistoryInfoes" Relationship="Self.FK_EmpolyeeHistory_Designation" FromRole="DesignationsInfo" ToRole="EmpolyeeHistoryInfo" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmployeesInfo">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="JobDesignationId" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Salary" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="ManagerId" Type="Int32" />
+          <Property Name="DateOfJoin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DepartmentInfoes" Relationship="Self.FK_tblDepartment_tblEmployee" FromRole="EmployeesInfo" ToRole="DepartmentInfo" />
+          <NavigationProperty Name="DepartmentInfo" Relationship="Self.FK_tblEmployees_tblDepartment" FromRole="EmployeesInfo" ToRole="DepartmentInfo" />
+          <NavigationProperty Name="DesignationsInfo" Relationship="Self.FK_Employees_Designations" FromRole="EmployeesInfo" ToRole="DesignationsInfo" />
+          <NavigationProperty Name="EmpolyeeHistoryInfo" Relationship="Self.FK_EmpolyeeHistory_Empolyee" FromRole="EmployeesInfo" ToRole="EmpolyeeHistoryInfo" />
+          <NavigationProperty Name="EmployeesInfo1" Relationship="Self.FK_tblDepartment_tblEmployees" FromRole="EmployeesInfo" ToRole="EmployeesInfo1" />
+          <NavigationProperty Name="EmployeesInfo2" Relationship="Self.FK_tblDepartment_tblEmployees" FromRole="EmployeesInfo1" ToRole="EmployeesInfo" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmpolyeeHistoryInfo">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="DesignationId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <NavigationProperty Name="DepartmentInfo" Relationship="Self.FK_EmpolyeeHistory_Department" FromRole="EmpolyeeHistoryInfo" ToRole="DepartmentInfo" />
+          <NavigationProperty Name="DesignationsInfo" Relationship="Self.FK_EmpolyeeHistory_Designation" FromRole="EmpolyeeHistoryInfo" ToRole="DesignationsInfo" />
+          <NavigationProperty Name="EmployeesInfo" Relationship="Self.FK_EmpolyeeHistory_Empolyee" FromRole="EmpolyeeHistoryInfo" ToRole="EmployeesInfo" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LocationsInfo">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DepartmentInfoes" Relationship="Self.FK_tblDepartment_tblLocation" FromRole="LocationsInfo" ToRole="DepartmentInfo" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_EmpolyeeHistory_Department">
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="0..1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblEmployee">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="0..1" />
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="DepartmentInfo">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblLocation">
+          <End Role="LocationsInfo" Type="Self.LocationsInfo" Multiplicity="0..1" />
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocationsInfo">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="DepartmentInfo">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmployees_tblDepartment">
+          <End Role="DepartmentInfo" Type="Self.DepartmentInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Designations">
+          <End Role="DesignationsInfo" Type="Self.DesignationsInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationsInfo">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo">
+              <PropertyRef Name="JobDesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Designation">
+          <End Role="DesignationsInfo" Type="Self.DesignationsInfo" Multiplicity="0..1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignationsInfo">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="DesignationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpolyeeHistory_Empolyee">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="1" />
+          <End Role="EmpolyeeHistoryInfo" Type="Self.EmpolyeeHistoryInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmpolyeeHistoryInfo">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDepartment_tblEmployees">
+          <End Role="EmployeesInfo" Type="Self.EmployeesInfo" Multiplicity="0..1" />
+          <End Role="EmployeesInfo1" Type="Self.EmployeesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesInfo">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmployeesInfo1">
+              <PropertyRef Name="ManagerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HrManagementDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DepartmentInfoes" EntityType="Self.DepartmentInfo" />
+          <EntitySet Name="DesignationsInfoes" EntityType="Self.DesignationsInfo" />
+          <EntitySet Name="EmployeesInfoes" EntityType="Self.EmployeesInfo" />
+          <EntitySet Name="EmpolyeeHistoryInfoes" EntityType="Self.EmpolyeeHistoryInfo" />
+          <EntitySet Name="LocationsInfoes" EntityType="Self.LocationsInfo" />
+          <AssociationSet Name="FK_EmpolyeeHistory_Department" Association="Self.FK_EmpolyeeHistory_Department">
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfoes" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblEmployee" Association="Self.FK_tblDepartment_tblEmployee">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblLocation" Association="Self.FK_tblDepartment_tblLocation">
+            <End Role="LocationsInfo" EntitySet="LocationsInfoes" />
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmployees_tblDepartment" Association="Self.FK_tblEmployees_tblDepartment">
+            <End Role="DepartmentInfo" EntitySet="DepartmentInfoes" />
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Designations" Association="Self.FK_Employees_Designations">
+            <End Role="DesignationsInfo" EntitySet="DesignationsInfoes" />
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Designation" Association="Self.FK_EmpolyeeHistory_Designation">
+            <End Role="DesignationsInfo" EntitySet="DesignationsInfoes" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpolyeeHistory_Empolyee" Association="Self.FK_EmpolyeeHistory_Empolyee">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+            <End Role="EmpolyeeHistoryInfo" EntitySet="EmpolyeeHistoryInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDepartment_tblEmployees" Association="Self.FK_tblDepartment_tblEmployees">
+            <End Role="EmployeesInfo" EntitySet="EmployeesInfoes" />
+            <End Role="EmployeesInfo1" EntitySet="EmployeesInfoes" />
+          </AssociationSet>
+          <EntitySet Name="OperationInfoes" EntityType="HrManagementDbModel.OperationInfo" />
+          <EntitySet Name="RoleOperationMappingInfoes" EntityType="HrManagementDbModel.RoleOperationMappingInfo" />
+          <EntitySet Name="sysdiagrams" EntityType="HrManagementDbModel.sysdiagram" />
+          <EntitySet Name="UserInfoes" EntityType="HrManagementDbModel.UserInfo" />
+          <EntitySet Name="UserRoleInfoes" EntityType="HrManagementDbModel.UserRoleInfo" />
+          <EntitySet Name="UserRoleMappingInfoes" EntityType="HrManagementDbModel.UserRoleMappingInfo" />
+          <AssociationSet Name="FK_RoleOperationMappingInfo_Operation" Association="HrManagementDbModel.FK_RoleOperationMappingInfo_Operation">
+            <End Role="OperationInfo" EntitySet="OperationInfoes" />
+            <End Role="RoleOperationMappingInfo" EntitySet="RoleOperationMappingInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleOperationMappingInfo_UserRoleInfoId" Association="HrManagementDbModel.FK_RoleOperationMappingInfo_UserRoleInfoId">
+            <End Role="UserRoleInfo" EntitySet="UserRoleInfoes" />
+            <End Role="RoleOperationMappingInfo" EntitySet="RoleOperationMappingInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMappingInfo_UserInfo" Association="HrManagementDbModel.FK_UserRoleMappingInfo_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="UserRoleMappingInfo" EntitySet="UserRoleMappingInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoleMappingInfo_UserRoleInfo" Association="HrManagementDbModel.FK_UserRoleMappingInfo_UserRoleInfo">
+            <End Role="UserRoleInfo" EntitySet="UserRoleInfoes" />
+            <End Role="UserRoleMappingInfo" EntitySet="UserRoleMappingInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OperationInfo">
+          <Key>
+            <PropertyRef Name="OperationId" />
+          </Key>
+          <Property Name="OperationId" Type="Int32" Nullable="false" />
+          <Property Name="Operation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RoleOperationMappingInfoes" Relationship="HrManagementDbModel.FK_RoleOperationMappingInfo_Operation" FromRole="OperationInfo" ToRole="RoleOperationMappingInfo" />
+        </EntityType>
+        <EntityType Name="RoleOperationMappingInfo">
+          <Key>
+            <PropertyRef Name="RoleOperationMapId" />
+          </Key>
+          <Property Name="RoleOperationMapId" Type="Int32" Nullable="false" />
+          <Property Name="UserRoleId" Type="Int32" />
+          <Property Name="OperationId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OperationInfo" Relationship="HrManagementDbModel.FK_RoleOperationMappingInfo_Operation" FromRole="RoleOperationMappingInfo" ToRole="OperationInfo" />
+          <NavigationProperty Name="UserRoleInfo" Relationship="HrManagementDbModel.FK_RoleOperationMappingInfo_UserRoleInfoId" FromRole="RoleOperationMappingInfo" ToRole="UserRoleInfo" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserRoleMappingInfoes" Relationship="HrManagementDbModel.FK_UserRoleMappingInfo_UserInfo" FromRole="UserInfo" ToRole="UserRoleMappingInfo" />
+        </EntityType>
+        <EntityType Name="UserRoleInfo">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserRoleName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateUserId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RoleOperationMappingInfoes" Relationship="HrManagementDbModel.FK_RoleOperationMappingInfo_UserRoleInfoId" FromRole="UserRoleInfo" ToRole="RoleOperationMappingInfo" />
+          <NavigationProperty Name="UserRoleMappingInfoes" Relationship="HrManagementDbModel.FK_UserRoleMappingInfo_UserRoleInfo" FromRole="UserRoleInfo" ToRole="UserRoleMappingInfo" />
+        </EntityType>
+        <EntityType Name="UserRoleMappingInfo">
+          <Key>
+            <PropertyRef Name="UserRoleMapId" />
+          </Key>
+          <Property Name="UserRoleMapId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="UserRoleId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserInfo" Relationship="HrManagementDbModel.FK_UserRoleMappingInfo_UserInfo" FromRole="UserRoleMappingInfo" ToRole="UserInfo" />
+          <NavigationProperty Name="UserRoleInfo" Relationship="HrManagementDbModel.FK_UserRoleMappingInfo_UserRoleInfo" FromRole="UserRoleMappingInfo" ToRole="UserRoleInfo" />
+        </EntityType>
+        <Association Name="FK_RoleOperationMappingInfo_Operation">
+          <End Type="HrManagementDbModel.OperationInfo" Role="OperationInfo" Multiplicity="0..1" />
+          <End Type="HrManagementDbModel.RoleOperationMappingInfo" Role="RoleOperationMappingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationInfo">
+              <PropertyRef Name="OperationId" />
+            </Principal>
+            <Dependent Role="RoleOperationMappingInfo">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleOperationMappingInfo_UserRoleInfoId">
+          <End Type="HrManagementDbModel.UserRoleInfo" Role="UserRoleInfo" Multiplicity="0..1" />
+          <End Type="HrManagementDbModel.RoleOperationMappingInfo" Role="RoleOperationMappingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoleInfo">
+              <PropertyRef Name="UserRoleId" />
+            </Principal>
+            <Dependent Role="RoleOperationMappingInfo">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMappingInfo_UserInfo">
+          <End Type="HrManagementDbModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+          <End Type="HrManagementDbModel.UserRoleMappingInfo" Role="UserRoleMappingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoleMappingInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoleMappingInfo_UserRoleInfo">
+          <End Type="HrManagementDbModel.UserRoleInfo" Role="UserRoleInfo" Multiplicity="0..1" />
+          <End Type="HrManagementDbModel.UserRoleMappingInfo" Role="UserRoleMappingInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoleInfo">
+              <PropertyRef Name="UserRoleId" />
+            </Principal>
+            <Dependent Role="UserRoleMappingInfo">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HrManagementDbModelStoreContainer" CdmEntityContainer="HrManagementDbEntities">
+          <EntitySetMapping Name="DepartmentInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.DepartmentInfo">
+              <MappingFragment StoreEntitySet="DepartmentInfo">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DesignationsInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.DesignationsInfo">
+              <MappingFragment StoreEntitySet="DesignationsInfo">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MinSalary" ColumnName="MinSalary" />
+                <ScalarProperty Name="MaxSalary" ColumnName="MaxSalary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeesInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.EmployeesInfo">
+              <MappingFragment StoreEntitySet="EmployeesInfo">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="JobDesignationId" ColumnName="JobDesignationId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpolyeeHistoryInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.EmpolyeeHistoryInfo">
+              <MappingFragment StoreEntitySet="EmpolyeeHistoryInfo">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationsInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.LocationsInfo">
+              <MappingFragment StoreEntitySet="LocationsInfo">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.OperationInfo">
+              <MappingFragment StoreEntitySet="OperationInfo">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleOperationMappingInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.RoleOperationMappingInfo">
+              <MappingFragment StoreEntitySet="RoleOperationMappingInfo">
+                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="RoleOperationMapId" ColumnName="RoleOperationMapId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HrManagementDbModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.UserRoleInfo">
+              <MappingFragment StoreEntitySet="UserRoleInfo">
+                <ScalarProperty Name="LastUpdateUserId" ColumnName="LastUpdateUserId" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleMappingInfoes">
+            <EntityTypeMapping TypeName="HrManagementDbModel.UserRoleMappingInfo">
+              <MappingFragment StoreEntitySet="UserRoleMappingInfo">
+                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserRoleMapId" ColumnName="UserRoleMapId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

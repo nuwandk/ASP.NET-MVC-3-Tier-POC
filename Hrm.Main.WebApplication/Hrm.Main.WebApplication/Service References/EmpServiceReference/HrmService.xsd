@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:53010/HrmService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="BaseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Operation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="BaseDto" nillable="true" type="tns:BaseDto" />
+  <xs:complexType name="ArrayOfEmployeeDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeDto" nillable="true" type="tns:EmployeeDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeDto" nillable="true" type="tns:ArrayOfEmployeeDto" />
+  <xs:complexType name="EmployeeDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DateOfJoin" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Department" nillable="true" type="tns:DepartmentDto" />
+          <xs:element minOccurs="0" name="DepartmentId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Designation" nillable="true" type="tns:DesignationDto" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EmpId" type="xs:int" />
+          <xs:element minOccurs="0" name="Employee1" nillable="true" type="tns:EmployeeDto" />
+          <xs:element minOccurs="0" name="EmpolyeeHistory" nillable="true" type="tns:EmpolyeeHistoryDto" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="JobDesignationId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ManagerId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Salary" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmployeeDto" nillable="true" type="tns:EmployeeDto" />
+  <xs:complexType name="DepartmentDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepartmentId" type="xs:int" />
+          <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:EmployeeDto" />
+          <xs:element minOccurs="0" name="Employees" nillable="true" type="tns:ArrayOfEmployeeDto" />
+          <xs:element minOccurs="0" name="EmpolyeeHistories" nillable="true" type="tns:ArrayOfEmpolyeeHistoryDto" />
+          <xs:element minOccurs="0" name="Location" nillable="true" type="tns:LocationDto" />
+          <xs:element minOccurs="0" name="LocationId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ManagerId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DepartmentDto" nillable="true" type="tns:DepartmentDto" />
+  <xs:complexType name="ArrayOfEmpolyeeHistoryDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmpolyeeHistoryDto" nillable="true" type="tns:EmpolyeeHistoryDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpolyeeHistoryDto" nillable="true" type="tns:ArrayOfEmpolyeeHistoryDto" />
+  <xs:complexType name="EmpolyeeHistoryDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Department" nillable="true" type="tns:DepartmentDto" />
+          <xs:element minOccurs="0" name="DepartmentId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Designation" nillable="true" type="tns:DesignationDto" />
+          <xs:element minOccurs="0" name="DesignationId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="EmpId" type="xs:int" />
+          <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:EmployeeDto" />
+          <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmpolyeeHistoryDto" nillable="true" type="tns:EmpolyeeHistoryDto" />
+  <xs:complexType name="DesignationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DesignationId" type="xs:int" />
+          <xs:element minOccurs="0" name="Employees" nillable="true" type="tns:ArrayOfEmployeeDto" />
+          <xs:element minOccurs="0" name="EmpolyeeHistories" nillable="true" type="tns:ArrayOfEmpolyeeHistoryDto" />
+          <xs:element minOccurs="0" name="MaxSalary" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="MinSalary" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DesignationDto" nillable="true" type="tns:DesignationDto" />
+  <xs:complexType name="LocationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Departments" nillable="true" type="tns:ArrayOfDepartmentDto" />
+          <xs:element minOccurs="0" name="LocationId" type="xs:int" />
+          <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocationDto" nillable="true" type="tns:LocationDto" />
+  <xs:complexType name="ArrayOfDepartmentDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DepartmentDto" nillable="true" type="tns:DepartmentDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDepartmentDto" nillable="true" type="tns:ArrayOfDepartmentDto" />
+  <xs:complexType name="ServiceFaultExceptionDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceFaultExceptionDto" nillable="true" type="tns:ServiceFaultExceptionDto" />
+  <xs:complexType name="ArrayOfDesignationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DesignationDto" nillable="true" type="tns:DesignationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDesignationDto" nillable="true" type="tns:ArrayOfDesignationDto" />
+</xs:schema>

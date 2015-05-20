@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56406040-A3D8-4118-9C3D-52CFA2595FDF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hrm.Server.Business</RootNamespace>
+    <AssemblyName>Hrm.Server.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthorizationManager.cs" />
+    <Compile Include="BusinessEntities\BaseBusinessEntity.cs" />
+    <Compile Include="BusinessEntities\Department.cs" />
+    <Compile Include="BusinessEntities\Designation.cs" />
+    <Compile Include="BusinessEntities\Employee.cs" />
+    <Compile Include="BusinessEntities\Report.cs" />
+    <Compile Include="BusinessEntities\User.cs" />
+    <Compile Include="HrDataServiceFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hrm.Common.Dto\Hrm.Common.Dto.csproj">
+      <Project>{12a16dda-0f4e-4e3f-a4ba-91d09ac7d04b}</Project>
+      <Name>Hrm.Common.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hrm.Common.ExceptionHandling\Hrm.Common.ExceptionHandling.csproj">
+      <Project>{5129fed2-14a9-41ca-a555-96f0ee023d57}</Project>
+      <Name>Hrm.Common.ExceptionHandling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hrm.Common.Logging\Hrm.Common.Logging.csproj">
+      <Project>{a59bfd6e-eed0-444e-a8a7-c4e319598e02}</Project>
+      <Name>Hrm.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hrm.Common.Resources\Hrm.Common.Resources.csproj">
+      <Project>{7fa93b25-d07d-48ac-9d3b-931924339f33}</Project>
+      <Name>Hrm.Common.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hrm.Common.Utility\Hrm.Common.Utility.csproj">
+      <Project>{ad16d1ca-4091-48bb-91a4-aff6a2ffc2ef}</Project>
+      <Name>Hrm.Common.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hrm.Server.Data\Hrm.Server.Data.csproj">
+      <Project>{07e60606-0d16-4138-94bd-931a93c59887}</Project>
+      <Name>Hrm.Server.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

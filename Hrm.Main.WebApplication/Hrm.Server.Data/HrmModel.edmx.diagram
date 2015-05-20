@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="401c2c6ccb06411e8e9665a4c6f9ac7c" Name="Diagram1">
+        <EntityTypeShape EntityType="HrManagementDbModel.DepartmentInfo" Width="1.5" PointX="5.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrManagementDbModel.DesignationsInfo" Width="1.5" PointX="0.875" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrManagementDbModel.EmployeesInfo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrManagementDbModel.EmpolyeeHistoryInfo" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HrManagementDbModel.LocationsInfo" Width="1.5" PointX="5.125" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="HrManagementDbModel.FK_EmpolyeeHistory_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="HrManagementDbModel.FK_tblDepartment_tblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="HrManagementDbModel.FK_tblDepartment_tblLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="HrManagementDbModel.FK_tblEmployees_tblDepartment" ManuallyRouted="false" />
+        <AssociationConnector Association="HrManagementDbModel.FK_Employees_Designations" ManuallyRouted="false" />
+        <AssociationConnector Association="HrManagementDbModel.FK_EmpolyeeHistory_Designation" ManuallyRouted="false" />
+        <AssociationConnector Association="HrManagementDbModel.FK_EmpolyeeHistory_Empolyee" ManuallyRouted="false" />
+        <AssociationConnector Association="HrManagementDbModel.FK_tblDepartment_tblEmployees" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HrManagementDbModel.OperationInfo" Width="1.5" PointX="5.25" PointY="10.25" />
+        <EntityTypeShape EntityType="HrManagementDbModel.RoleOperationMappingInfo" Width="2.375" PointX="5" PointY="7.125" />
+        <EntityTypeShape EntityType="HrManagementDbModel.sysdiagram" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HrManagementDbModel.UserInfo" Width="1.5" PointX="0.5" PointY="9.875" />
+        <EntityTypeShape EntityType="HrManagementDbModel.UserRoleInfo" Width="1.5" PointX="0.5" PointY="7.25" />
+        <EntityTypeShape EntityType="HrManagementDbModel.UserRoleMappingInfo" Width="2.125" PointX="2.625" PointY="8.125" />
+        <AssociationConnector Association="HrManagementDbModel.FK_RoleOperationMappingInfo_Operation" />
+        <AssociationConnector Association="HrManagementDbModel.FK_RoleOperationMappingInfo_UserRoleInfoId" />
+        <AssociationConnector Association="HrManagementDbModel.FK_UserRoleMappingInfo_UserInfo" />
+        <AssociationConnector Association="HrManagementDbModel.FK_UserRoleMappingInfo_UserRoleInfo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

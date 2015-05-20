@@ -1,0 +1,80 @@
+﻿@model Hrm.Main.WebApplication.Models.EmployeeViewModel
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+<h2 style="font-family:Arial; font-size:25px">Employee Details </h2>
+
+<div style="font-family:Arial; font-size:12px">
+    <hr />
+    <dl class="dl-horizontal" >
+        <dt style="line-height: 30px">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd style="line-height: 30px">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt style="line-height: 30px">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd style="line-height: 30px">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt style ="line-height: 30px">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd style="line-height: 30px">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt style="line-height: 30px">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd style="line-height: 30px">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt style="line-height: 30px">
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd style="line-height: 30px">
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt style="line-height: 30px">
+            @Html.DisplayNameFor(model => model.DepartmentInfo.Name)
+        </dt>
+
+        <dd style="line-height: 30px">
+            @Html.DisplayFor(model => model.DepartmentInfo.Name)
+        </dd>
+
+        <dt style="line-height: 30px">
+            @Html.DisplayNameFor(model => model.DesignationsInfo.Title)
+        </dt>
+
+        <dd style="line-height: 30px">
+            @Html.DisplayFor(model => model.DesignationsInfo.Title)
+        </dd>
+
+        <dt style="line-height: 30px">
+            @Html.DisplayNameFor(model => model.EmpId)
+        </dt>
+
+        <dd style="line-height: 30px">
+            @Html.DisplayFor(model => model.EmpId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HrmService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:53010/HrmService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:53010/HrmService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" />
+      <xsd:import schemaLocation="http://localhost:53010/HrmService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IHrmService_GetEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployees" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_GetEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_GetEmployees_ServiceFaultExceptionDtoFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" name="detail" element="q1:ServiceFaultExceptionDto" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_GetDepartments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepartments" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_GetDepartments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepartmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_GetDepartments_ServiceFaultExceptionDtoFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" name="detail" element="q2:ServiceFaultExceptionDto" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_GetDesignations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDesignations" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_GetDesignations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDesignationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_GetDesignations_ServiceFaultExceptionDtoFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" name="detail" element="q3:ServiceFaultExceptionDto" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_CreateEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_CreateEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_CreateEmployee_ServiceFaultExceptionDtoFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" name="detail" element="q4:ServiceFaultExceptionDto" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_EditEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_EditEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_EditEmployee_ServiceFaultExceptionDtoFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" name="detail" element="q5:ServiceFaultExceptionDto" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_DeleteEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_DeleteEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHrmService_DeleteEmployee_ServiceFaultExceptionDtoFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Hrm.Common.Dto" name="detail" element="q6:ServiceFaultExceptionDto" />
+  </wsdl:message>
+  <wsdl:portType name="IHrmService">
+    <wsdl:operation name="GetEmployees">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHrmService/GetEmployees" message="tns:IHrmService_GetEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHrmService/GetEmployeesResponse" message="tns:IHrmService_GetEmployees_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IHrmService/GetEmployeesServiceFaultExceptionDtoFault" name="ServiceFaultExceptionDtoFault" message="tns:IHrmService_GetEmployees_ServiceFaultExceptionDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHrmService/GetDepartments" message="tns:IHrmService_GetDepartments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHrmService/GetDepartmentsResponse" message="tns:IHrmService_GetDepartments_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IHrmService/GetDepartmentsServiceFaultExceptionDtoFault" name="ServiceFaultExceptionDtoFault" message="tns:IHrmService_GetDepartments_ServiceFaultExceptionDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDesignations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHrmService/GetDesignations" message="tns:IHrmService_GetDesignations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHrmService/GetDesignationsResponse" message="tns:IHrmService_GetDesignations_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IHrmService/GetDesignationsServiceFaultExceptionDtoFault" name="ServiceFaultExceptionDtoFault" message="tns:IHrmService_GetDesignations_ServiceFaultExceptionDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHrmService/CreateEmployee" message="tns:IHrmService_CreateEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHrmService/CreateEmployeeResponse" message="tns:IHrmService_CreateEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IHrmService/CreateEmployeeServiceFaultExceptionDtoFault" name="ServiceFaultExceptionDtoFault" message="tns:IHrmService_CreateEmployee_ServiceFaultExceptionDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHrmService/EditEmployee" message="tns:IHrmService_EditEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHrmService/EditEmployeeResponse" message="tns:IHrmService_EditEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IHrmService/EditEmployeeServiceFaultExceptionDtoFault" name="ServiceFaultExceptionDtoFault" message="tns:IHrmService_EditEmployee_ServiceFaultExceptionDtoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHrmService/DeleteEmployee" message="tns:IHrmService_DeleteEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHrmService/DeleteEmployeeResponse" message="tns:IHrmService_DeleteEmployee_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IHrmService/DeleteEmployeeServiceFaultExceptionDtoFault" name="ServiceFaultExceptionDtoFault" message="tns:IHrmService_DeleteEmployee_ServiceFaultExceptionDtoFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IHrmService" type="tns:IHrmService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEmployees">
+      <soap:operation soapAction="http://tempuri.org/IHrmService/GetEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceFaultExceptionDtoFault">
+        <soap:fault use="literal" name="ServiceFaultExceptionDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartments">
+      <soap:operation soapAction="http://tempuri.org/IHrmService/GetDepartments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceFaultExceptionDtoFault">
+        <soap:fault use="literal" name="ServiceFaultExceptionDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDesignations">
+      <soap:operation soapAction="http://tempuri.org/IHrmService/GetDesignations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceFaultExceptionDtoFault">
+        <soap:fault use="literal" name="ServiceFaultExceptionDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmployee">
+      <soap:operation soapAction="http://tempuri.org/IHrmService/CreateEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceFaultExceptionDtoFault">
+        <soap:fault use="literal" name="ServiceFaultExceptionDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditEmployee">
+      <soap:operation soapAction="http://tempuri.org/IHrmService/EditEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceFaultExceptionDtoFault">
+        <soap:fault use="literal" name="ServiceFaultExceptionDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployee">
+      <soap:operation soapAction="http://tempuri.org/IHrmService/DeleteEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceFaultExceptionDtoFault">
+        <soap:fault use="literal" name="ServiceFaultExceptionDtoFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HrmService">
+    <wsdl:port name="BasicHttpBinding_IHrmService" binding="tns:BasicHttpBinding_IHrmService">
+      <soap:address location="http://localhost:53010/HrmService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
